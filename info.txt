@@ -1,0 +1,16 @@
+Once the games starts:
+
+First page that appears:
+
+1) InitialPage.qml
+Has 3 buttons:About, Startgame, Exit
+
+About.qml
+
+
+
+States Names:
+
+initialPage
+menu
+about

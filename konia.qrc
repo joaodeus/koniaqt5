@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/jolla_phone_M_Black.png</file>
+        <file>images/jolla_phone_M_Blue.png</file>
+        <file>images/jolla_phone_M_Green.png</file>
+        <file>images/jolla_phone_M_Orange.png</file>
+        <file>images/jolla_phone_M_Yellow.png</file>
+        <file>images/jolla_phone_M.png</file>
+        <file>images/jolla_phone_W_Black.png</file>
+        <file>images/jolla_phone_W_Blue.png</file>
+        <file>images/jolla_phone_W_Green.png</file>
+        <file>images/jolla_phone_W_Orange.png</file>
+        <file>images/jolla_phone_W_Yellow.png</file>
+        <file>images/jolla_phone_W.png</file>
+        <file>images/sun.png</file>
+        <file>images/jolla_boat.png</file>
+        <file>images/beach_palmtree.png</file>
+        <file>images/beach_sand.png</file>
+        <file>images/waves.png</file>
+        <file>images/plataform.png</file>
+    </qresource>
+</RCC>
