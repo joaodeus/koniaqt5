@@ -1,22 +1,22 @@
 <RCC>
     <qresource prefix="/images">
-        <file>images/jolla_phone_M_Black.png</file>
-        <file>images/jolla_phone_M_Blue.png</file>
-        <file>images/jolla_phone_M_Green.png</file>
-        <file>images/jolla_phone_M_Orange.png</file>
-        <file>images/jolla_phone_M_Yellow.png</file>
-        <file>images/jolla_phone_M.png</file>
-        <file>images/jolla_phone_W_Black.png</file>
-        <file>images/jolla_phone_W_Blue.png</file>
-        <file>images/jolla_phone_W_Green.png</file>
-        <file>images/jolla_phone_W_Orange.png</file>
-        <file>images/jolla_phone_W_Yellow.png</file>
-        <file>images/jolla_phone_W.png</file>
         <file>images/sun.png</file>
         <file>images/jolla_boat.png</file>
         <file>images/beach_palmtree.png</file>
         <file>images/beach_sand.png</file>
         <file>images/waves.png</file>
         <file>images/plataform.png</file>
+        <file>images/MPhone_black.png</file>
+        <file>images/MPhone_blue.png</file>
+        <file>images/MPhone_green.png</file>
+        <file>images/MPhone_orange.png</file>
+        <file>images/MPhone_white.png</file>
+        <file>images/MPhone_yellow.png</file>
+        <file>images/WPhone_black.png</file>
+        <file>images/WPhone_blue.png</file>
+        <file>images/WPhone_green.png</file>
+        <file>images/WPhone_orange.png</file>
+        <file>images/WPhone_white.png</file>
+        <file>images/WPhone_yellow.png</file>
     </qresource>
 </RCC>

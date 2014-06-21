@@ -8,12 +8,14 @@ Rectangle {
     radius: 25
 
     property string textBtn: "Button"
-    //property int show: 1
+    property string family: "sans"
+    property int pointSize: 9
 
     Text {
         id: buttonLabel
         anchors.centerIn: button
-        //color: activePalette.buttonText
+        font.family: family
+        font.pointSize: pointSize
         text: textBtn
     }
 

@@ -9,6 +9,7 @@ Item {
 
     Image {
         id: sailfishBoat
+        anchors.fill: parent
         source: "qrc:/images/images/jolla_boat.png"
     }
 
@@ -16,5 +17,4 @@ Item {
         id: mousearea
         anchors.fill: parent
     }
-
 }

@@ -23,4 +23,5 @@ OTHER_FILES += \
     info.txt \
     qml/KoniaQt5/InitialPage.qml \
     qml/KoniaQt5/About.qml \
-    qml/KoniaQt5/MenuLevels.qml
+    qml/KoniaQt5/MenuLevels.qml \
+    qml/KoniaQt5/Button01.qml

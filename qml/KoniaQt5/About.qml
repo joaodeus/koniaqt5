@@ -38,16 +38,9 @@ Rectangle {
 
     }
 
-    /*Button {
-        id: btn_About
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.margins: 20
-        textBtn: "Close"
-    }*/
 
     signal aboutClicked()
-    onAboutClicked: console.log("about")
+  //  onAboutClicked: console.log("about")
     MouseArea {
         id: mouseArea
         anchors.fill: parent//btn_About

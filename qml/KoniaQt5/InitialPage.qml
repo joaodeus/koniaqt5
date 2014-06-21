@@ -61,7 +61,7 @@ Rectangle {
         anchors.rightMargin: columnbuttons.spacing
         anchors.bottomMargin: columnbuttons.spacing
 
-        Button {
+        Button01 {
             id:aboutBtn
             textBtn: "About"
            // anchors.leftMargin: 12
@@ -69,7 +69,7 @@ Rectangle {
             onButtonClick: about()
         }
 
-        Button {
+        Button01 {
             id:startGameBtn
             textBtn: "Start Game"
            // anchors.leftMargin: 12
@@ -77,7 +77,7 @@ Rectangle {
             onButtonClick: gameclick()
         }
 
-        Button {
+        Button01 {
             id: gameExit
             textBtn: "Exit"
             anchors.bottom: parent.bottom
