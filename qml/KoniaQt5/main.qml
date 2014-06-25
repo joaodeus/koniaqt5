@@ -18,11 +18,11 @@ Rectangle {
 
 
     onWidthChanged: {
-        console.log("Rectangle width: ", width)
+    //    console.log("Rectangle width: ", width)
        // boat.pos.x: 0
     }
     onHeightChanged: {
-        console.log("Rectangle height: ", height)
+      //  console.log("Rectangle height: ", height)
       //  boat.pos.y: height
     }
 

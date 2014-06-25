@@ -25,6 +25,8 @@ Item {
 
     Image {
         id: phoneImage
+        anchors.fill: parent
+
         source: imageBackground
     }
 

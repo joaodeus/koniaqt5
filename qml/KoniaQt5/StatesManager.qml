@@ -8,8 +8,8 @@ Item {
     width: 360
     height: 420
 
-    property int m_with: 360
-    property int m_height: 420
+    property int m_with: width
+    property int m_height: height
 
     // States ----------------------------------------------------
     states: [
@@ -17,9 +17,8 @@ Item {
             name: "initialPage"
             PropertyChanges {
                 target: initialPageID
-                width: m_with
-                height: m_height
-                z: 1
+                x: 0
+                anchors.fill: parent
                 restoreEntryValues: true
             }
         },
@@ -28,7 +27,8 @@ Item {
             name: "menuLevels"
             PropertyChanges {
                 target: menuLevelsID
-                z: 1
+                x: 0
+                anchors.fill: parent
                 restoreEntryValues: true
             }
         },
@@ -37,7 +37,8 @@ Item {
             name: "about"
             PropertyChanges {
                 target: aboutID
-                z: 1
+                x: 0
+                anchors.fill: parent
                 restoreEntryValues: true
             }
         },
@@ -46,9 +47,11 @@ Item {
             name: "level_001"
             PropertyChanges {
                 target: level_001ID
-                z: 1
+                x: 0
+                anchors.fill: parent
                 animation: true
                 scorePoints: 0
+                gameDurationCount: 0
                 restoreEntryValues: true
             }
         },
@@ -57,7 +60,8 @@ Item {
             name: "level_001_introduction"
             PropertyChanges {
                 target: level_001_introductionID
-                z: 1
+                x: 0
+                anchors.fill: parent
                 restoreEntryValues: true
             }
         },
@@ -66,7 +70,9 @@ Item {
             name: "level_002"
             PropertyChanges {
                 target: level_002ID
-                z: 1
+                x: 0
+                anchors.fill: parent
+                gameRunning: true
                 restoreEntryValues: true
             }
         }
@@ -79,7 +85,8 @@ Item {
 
     About {
         id: aboutID
-        z: 0
+        x: m_with
+        anchors.fill: parent
         onAboutClicked: {
             if (z == 0)
                 return
@@ -89,11 +96,8 @@ Item {
     }
 
     InitialPage {
-        id: initialPageID
-        //anchors.fill: parent
-        width: 0
-        height: 0
-        z: 0
+        id: initialPageID        
+        x: m_with
         onGameclick: root.state = "menuLevels"
         onAbout: root.state = "about"
     }
@@ -101,8 +105,7 @@ Item {
 
     MenuLevels {
         id: menuLevelsID
-        anchors.fill: parent
-        z: 0
+        x: m_with
         onMenuLevel_back: root.state = "initialPage"
         onLevel_01: root.state = "level_001_introduction"
         onLevel_02: root.state = "level_002"
@@ -111,10 +114,10 @@ Item {
     // Levels
     Level_001 {
         id: level_001ID
-        anchors.fill: parent
-        z:0
+        x: m_with
         animation: false
         scorePoints: 0
+        gameDurationCount: 0
         //onStop: root.state = "menuLevels"
         onStop: root.state = "initialPage"
         //onPause: root.state = "initialPage"
@@ -122,14 +125,17 @@ Item {
 
     Level_001_introduction {
         id: level_001_introductionID
-        anchors.fill: parent
-        z:0
+        x: m_with
         onBtnSkip: root.state = "level_001"
     }
 
     Level_002 {
         id: level_002ID
-        anchors.fill: parent
-        z: 0
+        x: m_with
+
+        gameRunning: false
+        onExit: root.state = "initialPage"
     }
+
+
 }

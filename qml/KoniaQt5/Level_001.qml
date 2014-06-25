@@ -12,7 +12,7 @@ Rectangle {
     property bool animation: true
     property int scorePoints: 0
 
-    property int gameDuration: 60000
+    property int gameDuration: 60000 //miliseconds
     property int gameDurationCount: 0
 
     //signals
@@ -30,10 +30,6 @@ Rectangle {
     onPause: {
         animation: false
     }
-
-
-
-    //Score Board
 
     ScoreBoard {
         id: scoreboard
@@ -136,6 +132,7 @@ Rectangle {
              gameDurationCount += m_phone.animationDuration
              if (gameDurationCount > gameDuration)
              {
+                 console.log("end game")
                  stop()
                  //animation = false
                  //m_phone.isFalling = false
