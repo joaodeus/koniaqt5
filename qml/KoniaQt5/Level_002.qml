@@ -7,26 +7,40 @@ Rectangle {
     width: 360
     height: 420
 
-    property int m_margin: 65
     property int scorePoints: 0
-
+    property string borderColor: "red"
+    property int borderWidth: 1
+    property int m_margin: width / 5
+    property int rWith: m_phone.width * 2
+    property int rHeight: m_phone.height * 2
 
 
     Phone {
-        id: phoneAux
+        id: m_phone
+        x: r1.x
+        y: r1.y
+        z:1
         visible: false
+        Component.onCompleted: setup()
     }
 
-    //signal buttonClick()
     MouseArea {
         id: mouseArea
-        anchors.fill: phoneAux
+        anchors.fill: m_phone
         onClicked: {
-            if (phoneAux.visible)
-                if (phoneAux.isMeego)
+            if (m_phone.visible) {
+                if (m_phone.isMeego)
                     scorePoints +=10
                 else
                     scorePoints -=5
+
+                m_borderHammer2.x = m_phone.x
+                m_borderHammer2.y = m_phone.y
+
+                m_borderHammer2.visible = true
+                m_borderHammer1.visible = false
+                m_phone.visible = false
+            }
         }
     }
 
@@ -39,97 +53,133 @@ Rectangle {
         scoreText: scorePoints.toString()
     }
 
-    Rectangle {
+
+
+
+    FramePhone {
         id: r1
-        width: 24
-        height: 36
-        border.color: "lightblue"
+        width: rWith
+        height: rHeight
+
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.margins: m_margin
-
     }
 
-    Phone {
-        id: phone01
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.margins: m_margin
-        visible: false
-        Component.onCompleted: setup()
-    }
+    FramePhone {
+        id: r2
+        width: rWith
+        height: rHeight
 
-    Phone {
-        id: phone02
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.margins: m_margin
-        visible: false
-        Component.onCompleted: setup()
     }
 
-    Phone {
-        id: phone03
+    FramePhone {
+        id: r3
+        width: rWith
+        height: rHeight
+
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.margins: m_margin
-        visible: false
-        Component.onCompleted: setup()
     }
 
-    Phone {
-        id: phone04
+    FramePhone {
+        id: r4
+        width: rWith
+        height: rHeight
+
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.margins: m_margin
-        visible: false
-        Component.onCompleted: setup()
     }
 
-    Phone {
-        id: phone05
+    FramePhone {
+        id: r5
+        width: rWith
+        height: rHeight
+
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         anchors.margins: m_margin
-        visible: false
-        Component.onCompleted: setup()
     }
 
-    Phone {
-        id: phone06
+    FramePhone {
+        id: r6
+        width: rWith
+        height: rHeight
+
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.margins: m_margin
-        visible: false
-        Component.onCompleted: setup()
     }
 
-    Phone {
-        id: phone07
+    FramePhone {
+        id: r7
+        width: rWith
+        height: rHeight
+
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.margins: m_margin
-        visible: false
-        Component.onCompleted: setup()
     }
 
-    Phone {
-        id: phone08
+    FramePhone {
+        id: r8
+        width: rWith
+        height: rHeight
+
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.margins: m_margin
-        visible: false
-        Component.onCompleted: setup()
     }
 
-    Phone {
-        id: phone09
+    FramePhone {
+        id: r9
+        width: rWith
+        height: rHeight
+
         anchors.bottom: parent.bottom
         anchors.right: parent.right
         anchors.margins: m_margin
-        visible: false
-        Component.onCompleted: setup()
     }
+
+
+    //hammer
+    Item {
+        id: m_borderHammer2
+        width: 56
+        height: 58
+        x: 50
+        y: 100
+
+        visible: false
+
+        Image {
+            id: hammer2
+            anchors.fill: parent
+            source: "qrc:/images/images/hammer2.png"
+        }
+    }
+
+    //hammer
+    Rectangle {
+        id: m_borderHammer1
+        width: 56
+        height: 58
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+
+        Image {
+            id: hammer1
+            anchors.fill: parent
+            source: "qrc:/images/images/hammer1.png"
+        }
+    }
+
+
 
     property int timerIntervel: 1000
     property bool gameRunning: true
@@ -146,76 +196,65 @@ Rectangle {
 
 
         onTriggered: {
-            console.log(phoneAux.visible)
+            console.log(m_phone.visible)
 
-            phoneAux.visible = !phoneAux.visible
+            m_borderHammer1.visible = true
+            m_borderHammer2.visible = false
+            m_phone.visible = true
+            m_phone.setup()
 
-            var phone=Math.floor( Math.random() * 8 + 1)
+            var phonePosition=Math.floor( Math.random() * 8 + 1)
 
-            switch(phone) {
+            switch(phonePosition) {
                 case 1:
-                    phoneAux.x = phone01.x; console.log("phone01")
-                    phoneAux.y = phone01.y
+                    m_phone.x = r1.x+r1.width/2-m_phone.width/2
+                    m_phone.y = r1.y+r1.height/2-m_phone.height/2
                     break;
                 case 2:
-                    phoneAux.x = phone02.x; console.log("phone02")
-                    phoneAux.y = phone02.y
+                    m_phone.x = r2.x+r2.width/2-m_phone.width/2
+                    m_phone.y = r2.y+r2.height/2-m_phone.height/2
                     break;
                 case 3:
-                    phoneAux.x = phone03.x; console.log("phone03")
-                    phoneAux.y = phone03.y
+                    m_phone.x = r3.x+r3.width/2-m_phone.width/2
+                    m_phone.y = r3.y+r3.height/2-m_phone.height/2
                     break;
                 case 4:
-                    phoneAux.x = phone04.x; console.log("phone04")
-                    phoneAux.y = phone04.y
+                    m_phone.x = r4.x+r4.width/2-m_phone.width/2
+                    m_phone.y = r4.y+r4.height/2-m_phone.height/2
                     break;
                 case 5:
-                    phoneAux.x = phone05.x; console.log("phone05")
-                    phoneAux.y = phone05.y
+                    m_phone.x = r5.x+r5.width/2-m_phone.width/2
+                    m_phone.y = r5.y+r5.height/2-m_phone.height/2
                     break;
                 case 6:
-                    phoneAux.x = phone06.x; console.log("phone06")
-                    phoneAux.y = phone06.y
+                    m_phone.x = r6.x+r6.width/2-m_phone.width/2
+                    m_phone.y = r6.y+r6.height/2-m_phone.height/2
                     break;
                 case 7:
-                    phoneAux.x = phone07.x; console.log("phone07")
-                    phoneAux.y = phone07.y
+                    m_phone.x = r7.x+r7.width/2-m_phone.width/2
+                    m_phone.y = r7.y+r7.height/2-m_phone.height/2
                     break;
                 case 8:
-                    phoneAux.x = phone08.x; console.log("phone08")
-                    phoneAux.y = phone08.y
+                    m_phone.x = r8.x+r8.width/2-m_phone.width/2
+                    m_phone.y = r8.y+r8.height/2-m_phone.height/2
                     break;
                 case 9:
-                    phoneAux: phone09; console.log("phone09")
+                    m_phone.x = r9.x+r9.width/2-m_phone.width/2
+                    m_phone.y = r9.y+r9.height/2-m_phone.height/2
                     break;
                 default:
-                    phoneAux: phone09; console.log("phone09")
+                    m_phone.x = r9.x+r9.width/2-m_phone.width/2
+                    m_phone.y = r9.y+r9.height/2-m_phone.height/2
             }
-            phoneAux.setup()
+
+
+
             //phoneAux.visible = !phoneAux.visible
 
         }
     }
 
 
-    Grid {
-        id: m_grid
-        columns: 3
-
-        Phone {
-            id:m_x
-        }
-
-    }
-
-    MouseArea {
-        id: mmm
-        x: m_x.x
-        y: m_x.y
-        width: m_x.width
-        height: m_x.height
-        onClicked: console.log("mousingggg")
-    }
 
 
     signal exit()

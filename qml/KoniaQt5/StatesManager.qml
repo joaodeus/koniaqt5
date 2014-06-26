@@ -73,6 +73,7 @@ Item {
                 x: 0
                 anchors.fill: parent
                 gameRunning: true
+                scorePoints: 0
                 restoreEntryValues: true
             }
         }
@@ -134,6 +135,7 @@ Item {
         x: m_with
 
         gameRunning: false
+        scorePoints: 0
         onExit: root.state = "initialPage"
     }
 
