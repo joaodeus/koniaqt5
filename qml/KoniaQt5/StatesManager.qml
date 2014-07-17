@@ -55,7 +55,6 @@ Item {
                 anchors.fill: parent
                 animation: true
                 scorePoints: 0
-                gameDurationCount: 0
                 restoreEntryValues: true
             }
         },
@@ -146,7 +145,6 @@ Item {
         enabled: false
         animation: false
         scorePoints: 0
-        gameDurationCount: 0
         //onStop: root.state = "menuLevels"
         onStop: root.state = "initialPage"
         //onPause: root.state = "initialPage"
@@ -156,7 +154,7 @@ Item {
         id: level_001_introductionID
         x: m_with
         enabled: false
-        onBtnSkip: root.state = "level_001"
+        onBtnSkip: { level_001ID.resetLevel(); root.state = "level_001"}
     }
 
     Level_002 {

@@ -8,12 +8,6 @@ Rectangle {
     width: 360
     height: 420
 
-    //properties
-    property bool animation: true
-    property int scorePoints: 0
-
-    property int gameDuration: 60000 //miliseconds
-    property int gameDurationCount: 0
 
     //signals
     signal stop() // triggered when the sun is clicked
@@ -22,8 +16,8 @@ Rectangle {
         m_phone.y = Logic.PhoneInitialPositionY(parent.height, sea.height, plataform.height, m_phone.height)
         m_phone.finalPosition_x = Logic.PhoneFinalPositionX(parent.width)
         m_phone.finalPosition_y = Logic.PhoneFinalPositionY(parent.height, sea.height)
-        animation: false
-        gameDurationCount: 0
+        //animation: false
+      //  gameDurationCount: gameDuration
     }
 
     signal pause()
@@ -38,6 +32,17 @@ Rectangle {
         isVisible: true
         scoreText: scorePoints.toString()
     }
+
+    //time left board
+    ScoreBoard {
+        id: time_left
+        width: 90
+        anchors.top: parent.top
+        anchors.left: scoreboard.right
+        isVisible: true
+        scoreText: "time left: " + (gameDurationCount/1000).toString() + "s"
+    }
+
 
     Sun {
         id: sun
@@ -123,7 +128,17 @@ Rectangle {
          isFalling: animation
      }
 
+     //properties
+     property bool animation: true
+     property int scorePoints: 0
 
+     property int gameDuration: 60000 //miliseconds
+     property int gameDurationCount: gameDuration
+
+     function resetLevel() {
+         gameDurationCount = gameDuration
+         //animation = true
+     }
 
      Timer {
          id: timerAnimation
@@ -132,15 +147,11 @@ Rectangle {
          repeat: animation
 
          onTriggered: {
-
-             gameDurationCount += m_phone.animationDuration
-             if (gameDurationCount > gameDuration)
+             gameDurationCount -= m_phone.animationDuration
+             if (gameDurationCount <= 0)
              {
                  console.log("end game")
                  stop()
-                 //animation = false
-                 //m_phone.isFalling = false
-                 //gameDurationCount=0
              }
 
 
