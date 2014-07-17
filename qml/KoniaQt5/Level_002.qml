@@ -7,6 +7,8 @@ Rectangle {
     width: 360
     height: 420
 
+    color: "HoneyDew"
+
     property int scorePoints: 0
     property string borderColor: "red"
     property int borderWidth: 1
@@ -30,17 +32,18 @@ Rectangle {
         onClicked: {
             if (m_phone.visible) {
                 if (m_phone.isMeego)
-                    scorePoints +=10
+                    scorePoints -= 5
                 else
-                    scorePoints -=5
-
-                m_borderHammer2.x = m_phone.x
-                m_borderHammer2.y = m_phone.y
-
-                m_borderHammer2.visible = true
-                m_borderHammer1.visible = false
-                m_phone.visible = false
+                    scorePoints += 10
             }
+
+                m_borderHammerDown.x = m_phone.x
+                m_borderHammerDown.y = m_phone.y
+
+                m_borderHammerDown.visible = true
+                m_borderHammerUp.visible = false
+                m_phone.visible = false
+
         }
     }
 
@@ -51,6 +54,17 @@ Rectangle {
         anchors.margins: 10
         isVisible: true
         scoreText: scorePoints.toString()
+    }
+
+    //Time left score board
+    ScoreBoard {
+        id: timeleft
+        width: 90
+        anchors.top: parent.top
+        anchors.left: scoreboard.right
+        anchors.margins: 10
+        isVisible: true
+        scoreText: "time left: " + (x_time/1000).toString() + "s"
     }
 
 
@@ -149,7 +163,7 @@ Rectangle {
 
     //hammer
     Item {
-        id: m_borderHammer2
+        id: m_borderHammerDown
         width: 56
         height: 58
         x: 50
@@ -160,13 +174,13 @@ Rectangle {
         Image {
             id: hammer2
             anchors.fill: parent
-            source: "qrc:/images/images/hammer2.png"
+            source: "qrc:/images/images/hammerDown.png"
         }
     }
 
     //hammer
     Rectangle {
-        id: m_borderHammer1
+        id: m_borderHammerUp
         width: 56
         height: 58
         anchors.left: parent.left
@@ -175,33 +189,49 @@ Rectangle {
         Image {
             id: hammer1
             anchors.fill: parent
-            source: "qrc:/images/images/hammer1.png"
+            source: "qrc:/images/images/hammerUp.png"
         }
     }
 
 
 
-    property int timerIntervel: 1000
+    property int timerInterval: 1000
     property bool gameRunning: true
     property bool isVisible: false
+    property int duration: 60000 // 1 minute
+    property int x_time: duration
 
-
+    function resetLevel() {
+        x_time = duration
+    }
 
     Timer {
         id: timerAnimation
-        interval: timerIntervel
+        interval: timerInterval
         running: gameRunning
         repeat: gameRunning
 
 
 
         onTriggered: {
+
+
+
             console.log(m_phone.visible)
 
-            m_borderHammer1.visible = true
-            m_borderHammer2.visible = false
+            m_borderHammerUp.visible = true
+            m_borderHammerDown.visible = false
             m_phone.visible = true
-            m_phone.setup()
+            m_phone.setup2(0.3)
+
+
+            x_time -= timerInterval
+            console.log("x_time: "+x_time)
+            if (x_time <= 0) {
+                gameRunning = false
+                m_phone.visible = false
+            }
+
 
             var phonePosition=Math.floor( Math.random() * 8 + 1)
 

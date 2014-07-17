@@ -43,7 +43,11 @@ Rectangle {
         id: sun
         anchors.top: parent.top
         anchors.right: parent.right
-        onSunClick: stop()
+        onSunClick: {
+            stop()
+            console.log("level 1 - sun clicked")
+
+        }
         //onSunClick: pause()
     }
 

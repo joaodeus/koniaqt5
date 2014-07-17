@@ -16,12 +16,35 @@ Item {
     property int animationDuration: 1000 //one second
     property bool isFalling: false
 
+    signal setupM
+    onSetupM: {
+        isMeego = Logic.setPhoneRandomModel2(1)
+        imageBackground = Logic.setPhoneColor(isMeego)
+    }
 
-    signal setup
-    onSetup: {
+    signal setupW
+    onSetupW: {
+        isMeego = Logic.setPhoneRandomModel2(0)
+        imageBackground = Logic.setPhoneColor(isMeego)
+    }
+
+
+
+    function setup2(percentageOfBeingMeego) {
+        isMeego = Logic.setPhoneRandomModel2(percentageOfBeingMeego)
+        imageBackground = Logic.setPhoneColor(isMeego)
+    }
+
+    function setup() {
         isMeego = Logic.setPhoneRandomModel()
         imageBackground = Logic.setPhoneColor(isMeego)
     }
+
+    /*signal setup
+    onSetup: {
+        isMeego = Logic.setPhoneRandomModel()
+        imageBackground = Logic.setPhoneColor(isMeego)
+    }*/
 
     Image {
         id: phoneImage

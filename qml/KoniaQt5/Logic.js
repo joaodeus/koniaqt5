@@ -19,10 +19,21 @@ function PhoneFinalPositionY (pageHeight, seaHeight)
     return pageHeight-seaHeight + Math.random()*seaHeight
 }
 
+//We define the percentage probablility of being a Meego
+// percentageOfBeingMeego value should be between 0-1
+function setPhoneRandomModel2(percentageOfBeingMeego)
+{
+    var x = Math.random()
+    //console.log("value of random: "+x)
+    if (x < percentageOfBeingMeego)
+        return true
+    else
+        return false
+}
 
 function setPhoneRandomModel()
 {
-    //We will make it 70% chances of being a M Phone, 30% being a W Phone
+    //By default, we will make it 70% chances of being a M Phone, 30% being a W Phone
     if (Math.random() > 0.3)
         return true
     else
@@ -73,3 +84,4 @@ function checkColision(x1, y1, x2, y2)
     else
         return false
 }
+

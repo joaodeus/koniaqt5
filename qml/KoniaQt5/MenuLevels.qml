@@ -45,7 +45,7 @@ Rectangle {
 
 
        ButtonLevel {
-            id: level4
+            id: back
             textBtn: "Back"
             onButtonClick: menuLevel_back()
        }

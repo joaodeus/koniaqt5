@@ -18,7 +18,7 @@
         <file>images/WPhone_orange.png</file>
         <file>images/WPhone_white.png</file>
         <file>images/WPhone_yellow.png</file>
-        <file>images/hammer1.png</file>
-        <file>images/hammer2.png</file>
+        <file>images/hammerUp.png</file>
+        <file>images/hammerDown.png</file>
     </qresource>
 </RCC>
