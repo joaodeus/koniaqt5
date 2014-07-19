@@ -103,6 +103,17 @@ Item {
                 anchors.fill: parent
                 restoreEntryValues: true
             }
+        },
+
+        State {
+            name: "level_004"
+            PropertyChanges {
+                target: level_004ID
+                x: 0
+                enabled: true
+                anchors.fill: parent
+                restoreEntryValues: true
+            }
         }
 
     ]
@@ -136,6 +147,7 @@ Item {
         onLevel_01: root.state = "level_001_introduction"
         onLevel_02: root.state = "level_002_introduction"
         onLevel_03: root.state = "level_003"
+        onLevel_04: root.state = "level_004"
     }
 
     // Levels
@@ -179,6 +191,13 @@ Item {
         x: m_with
         enabled: false
         onExit: root.state = "initialPage"
+    }
+
+    Level_004 {
+        id: level_004ID
+        x: m_with
+        enabled: false
+       // onExit: root.state = "initialPage"
     }
 
 

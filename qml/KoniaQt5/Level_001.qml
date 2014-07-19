@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import QtQuick.Particles 2.0
 
 import "elements"
 import "Logic.js" as Logic
@@ -93,6 +94,45 @@ Rectangle {
          anchors.bottom: sea.top
          anchors.horizontalCenter: parent.horizontalCenter
      }
+
+
+     ParticleSystem {
+         id: particleSystem
+     }
+
+
+     Emitter {
+         id: emitter
+         anchors.top: plataform.top
+         anchors.horizontalCenter: plataform.horizontalCenter
+         anchors.margins: 60
+         width: 20; height: 20
+         system: particleSystem
+         emitRate: 20
+         lifeSpan: 1000
+         lifeSpanVariation: 500
+         size: 12
+         endSize: 6
+
+         velocity: AngleDirection {
+                     angle: 90
+                     angleVariation: 60
+                     magnitude: 120
+                     magnitudeVariation: 30
+                 }
+     }
+
+     ImageParticle {
+         source: "qrc:/images/images/fireParticle1.png"
+         system: particleSystem
+         color: '#FFD700'
+         colorVariation: 0.2
+        // entryEffect: ImageParticle.Scale
+     }
+
+
+
+
 
      //Waves above the sea
      Image {

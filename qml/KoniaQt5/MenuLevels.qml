@@ -11,6 +11,7 @@ Rectangle {
     signal level_01()
     signal level_02()
     signal level_03()
+    signal level_04()
     signal menuLevel_back()
 
     Grid {
@@ -43,6 +44,11 @@ Rectangle {
             onButtonClick: level_03()
        }
 
+       ButtonLevel {
+            id: level4
+            textBtn: "Level 4"
+            onButtonClick: level_04()
+       }
 
        ButtonLevel {
             id: back

@@ -7,7 +7,8 @@ DEPLOYMENTFOLDERS = folder_01
 QML_IMPORT_PATH =
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    boarddrawing.cpp
 
 # Installation path
 # target.path =
@@ -25,3 +26,6 @@ OTHER_FILES += \
     qml/KoniaQt5/About.qml \
     qml/KoniaQt5/MenuLevels.qml \
     qml/KoniaQt5/Button01.qml
+
+HEADERS += \
+    boarddrawing.h

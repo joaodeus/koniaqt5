@@ -20,5 +20,8 @@
         <file>images/WPhone_yellow.png</file>
         <file>images/hammerUp.png</file>
         <file>images/hammerDown.png</file>
+        <file>images/water_splash.png</file>
+        <file>images/fireParticle.png</file>
+        <file>images/fireParticle1.png</file>
     </qresource>
 </RCC>
